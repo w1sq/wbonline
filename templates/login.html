@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block links %}
+<title>Вход</title>
+<link href="/static/login.css" rel="stylesheet" />
+{% endblock %} 
+{% block content %}
+<h1>Вход</h1>
+<p>Для входа заполните следующие поля:</p>
+<form method="POST">
+    <div class="text-success font-weight-bold">
+    {% if msg %}
+        <div class="badge bg-success text-wrap font-weight-bold" style="font-size: large;">
+            {{msg}}
+        </div>
+    {% endif %}
+    </div>
+    <div class="mb-3">
+    <label for="email" class="form-label"><b>Email</b></label>
+    <input
+      type="email"
+      class="form-control short"
+      id="email"
+      name="email"
+      {% if email %}value={{email}}{% endif %}
+      placeholder="name@example.com"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label"><b>Пароль</b></label>
+    <input type="password" class="form-control short" {% if password %}value={{password}}{% endif %} id="password" name="password" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label"><b>Captcha</b></label>
+    <img src="/captcha/{{ captcha_id }}" /></div>
+      <div class="mb-3">
+    <input
+      id="captcha_id"
+      name="captcha_id"
+      value="{{ captcha_id }}"
+      type="hidden"
+    />
+    <input class="form-control short" id="captcha" name="captcha" />
+  </div>
+
+  <div class="text-danger font-weight-bold mb-3">
+    {% for error in errors %}
+    <li>{{error}}</li>
+    {% endfor %}
+  </div></br>
+    <button type="submit" class="btn btn-primary">Вход</button>
+</form>
+{% endblock %}
+

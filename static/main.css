@@ -1,0 +1,22 @@
+.accordion-button {
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.accordion-body.ul {
+  font-size: 70%;
+}
+.redbox {
+  background-color: #f2dede;
+}
+
+.login-block {
+  border: 1px solid transparent;
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  margin: 2% 0%;
+  border-radius: 4px;
+  padding: 2%;
+}

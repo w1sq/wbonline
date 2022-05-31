@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% block links %}
+<title>Регистрация</title>
+<link href="/static/signup.css" rel="stylesheet" />
+{% endblock %} {% block content %}
+<h1>Регистрация</h1>
+<p>Для регистрации заполните следующие поля:</p>
+<form method="POST">
+  <div class="mb-3">
+    <label for="email" class="form-label"><b>Email</b></label>
+    <input
+      type="email"
+      class="form-control short"
+      id="email"
+      name="email"
+      {% if email %}value={{email}}{% endif %}
+      placeholder="name@example.com"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="password1" class="form-label"><b>Пароль</b></label>
+    <input type="password" class="form-control short" {% if password1 %}value={{password1}}{% endif %} id="password1" name="password1" />
+  </div>
+
+  <div class="mb-3">
+    <label for="password2" class="form-label"><b>Снова пароль</b></label>
+    <input type="password" class="form-control short" {% if password2 %}value={{password2}}{% endif %} name="password2" id="password2" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label"><b>Captcha</b></label>
+    <img src="/captcha/{{ captcha_id }}" /></div>
+      <div class="mb-3">
+    <input
+      id="captcha_id"
+      name="captcha_id"
+      value="{{ captcha_id }}"
+      type="hidden"
+    />
+    <input class="form-control short" id="captcha" name="captcha" />
+  </div>
+
+  <div class="mb-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      name="checkbox"
+      id="checkbox"
+    />
+    <label class="form-check-label" for="checkbox">
+      Я принимаю 
+      <a href="/terms-of-service" class="terms">условия пользовательского соглашения</a>
+    </label>
+  </div>
+
+  <div class="text-danger font-weight-bold mb-3">
+    {% for error in errors %}
+    <li>{{error}}</li>
+    {% endfor %}
+  </div></br>
+    <button type="submit" class="btn btn-primary">Регистрация</button>
+</form>
+{% endblock %}
